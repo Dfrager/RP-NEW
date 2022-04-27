@@ -10,7 +10,7 @@ import TextInputField from '../UI/FormComponents/Input/TextInputField';
 import CustomCheckBox from '../UI/FormComponents/CheckBox/CustomCheckBox';
 import CommonButton from '../UI/Button/CommonButton';
 import CustomModal from '../UI/Modal/CustomModal';
-import TCandRefund from '../TermsAndConditions/TCandRefund';
+import TCandRefund from '../Common/TermsAndConditions/TCandRefund';
 
 // const passwordRegex= ^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,}$
 

@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {useNavigate} from 'react-router';
+import React, {useState, useEffect} from 'react';
+import {useNavigate, useParams} from 'react-router';
 
 import {Alert, Box, Container, Link, Paper, Typography} from '@mui/material';
 
@@ -11,6 +11,8 @@ import ProviderAuth from './ProviderAuth';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import SignIn from '../../components/Authentication/SignIn';
 import SignUp from '../../components/Authentication/SignUp';
+
+// const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const Authentication = (props) => {
 	const navigate = useNavigate();
@@ -52,7 +54,7 @@ const Authentication = (props) => {
 				sessionStorage.setItem('username', response.data.user.username);
 				setIsError(null);
 				setIsLoading(false);
-				navigate('/profile-registration');
+				navigate(`/profile-registration`);
 			})
 			.catch((error) => {
 				setIsError(error.response.data.error);

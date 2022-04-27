@@ -2,7 +2,7 @@ import {Box, InputLabel} from '@mui/material';
 import React from 'react';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 
-import CustomSelect from '../../UI/FormComponents/Dropdown/CustomSelect';
+import CustomSelect from '../../UI/FormComponents/Select/CustomSelect';
 
 const servicesItems = [
 	{value: 'Home Tutor', id: 123},
@@ -17,7 +17,7 @@ const Services = (props) => {
 	return (
 		<Box sx={{my: 4}}>
 			<InputLabel sx={{fontWeight: 600, color: '#000'}}>
-				What services are you looking for?
+				What services are you Interested in?
 			</InputLabel>
 			<Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
 				<CustomSelect

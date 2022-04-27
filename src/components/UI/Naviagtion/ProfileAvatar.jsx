@@ -28,7 +28,7 @@ function ProfileAvatar(props) {
 		e.preventDefault();
 		sessionStorage.removeItem('token');
 		sessionStorage.removeItem('username');
-		navigate('/auth');
+		navigate('/login');
 	};
 
 	return (

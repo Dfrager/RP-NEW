@@ -11,7 +11,9 @@ import {globalTheme} from './shared/theme/globalTheme';
 ReactDOM.render(
 	<BrowserRouter>
 		<ThemeProvider theme={globalTheme}>
-			<App />
+			<React.StrictMode>
+				<App />
+			</React.StrictMode>
 		</ThemeProvider>
 	</BrowserRouter>,
 	document.getElementById('root')
