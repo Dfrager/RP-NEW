@@ -4,7 +4,6 @@ import {useTheme} from '@mui/material/styles';
 
 import TermsAndCondition from './TermsAndCondition';
 import RefundPolicy from './RefundPolicy';
-import CustomModal from '../UI/Modal/CustomModal';
 
 function TabPanel(props) {
 	const {children, value, index, ...others} = props;

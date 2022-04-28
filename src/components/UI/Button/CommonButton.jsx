@@ -16,11 +16,12 @@ const CommonButton = ({
 }) => {
 	const theme = useTheme();
 
-
 	const buttonStyles = {
 		background: theme.palette.common.white,
 		color: theme.palette.primary.main,
 		transition: '.4s all ease-out',
+		mx: 2,
+		
 
 		'&:hover': {
 			background: `linear-gradient(180deg, ${theme.palette.primary.main} 0%, ${theme.palette.primary.light} 100%)`,
@@ -40,7 +41,6 @@ const CommonButton = ({
 				to={toPath}
 				type={type}
 				onClick={click}
-				
 			>
 				{children}
 			</Button>
