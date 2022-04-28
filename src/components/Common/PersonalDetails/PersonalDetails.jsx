@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Avatar, Box, InputLabel, Typography} from '@mui/material';
 
 import {useFormikContext} from 'formik';
@@ -8,24 +8,17 @@ import CustomDatePicker from '../../UI/FormComponents/DatePicker/CustomDatePicke
 import CustomSelect from '../../UI/FormComponents/Select/CustomSelect';
 import ProfileImage from './ProfileImage';
 
-const genderItems = [
-	{value: 'Male', id: 123},
-	{value: 'Female', id: 456},
-];
+const genderItems = ['Male', 'Female'];
 
-const stateItems = [
-	{value: 'Karnataka', id: 123},
-	{value: 'Kerala', id: 456},
-	{value: 'Tamil Nadu', id: 789},
-];
+const stateItems = ['Karnataka', 'Kerala', 'Tamil Nadu'];
 
-const cityItems = [
-	{value: 'Bengaluru', id: 123},
-	{value: 'Mysore', id: 456},
-];
+const cityItems = ['Bengaluru', 'Mysore'];
 
 const PersonalDetails = (props) => {
 	const {values} = useFormikContext();
+
+	useEffect(() => {}, []);
+
 	const styles = {
 		width: '200px',
 		marginRight: '1rem',
@@ -46,7 +39,7 @@ const PersonalDetails = (props) => {
 					<>
 						<Box sx={{display: 'flex', alignItems: 'center', my: 4}}>
 							<Box>
-								<InputLabel sx={{fontWeight: 600, color: '#95a5a6'}}>First Name</InputLabel>
+								<InputLabel sx={{fontWeight: 400, color: '#95a5a6'}}>First Name</InputLabel>
 								<TextInputField
 									name='firstName'
 									size='small'
@@ -55,7 +48,7 @@ const PersonalDetails = (props) => {
 								/>
 							</Box>
 							<Box>
-								<InputLabel sx={{fontWeight: 600, color: '#95a5a6'}}>Last Name</InputLabel>
+								<InputLabel sx={{fontWeight: 400, color: '#95a5a6'}}>Last Name</InputLabel>
 								<TextInputField
 									name='lastName'
 									size='small'
@@ -64,7 +57,7 @@ const PersonalDetails = (props) => {
 								/>
 							</Box>
 							<Box>
-								<InputLabel sx={{fontWeight: 600, color: '#95a5a6'}}>Gender</InputLabel>
+								<InputLabel sx={{fontWeight: 400, color: '#95a5a6'}}>Gender</InputLabel>
 								<CustomSelect
 									name='gender'
 									styles={selectStyles}
@@ -78,7 +71,7 @@ const PersonalDetails = (props) => {
 					<>
 						<Box sx={{display: 'flex', alignItems: 'center', my: 4}}>
 							<Box>
-								<InputLabel sx={{fontWeight: 600, color: '#95a5a6'}}>Date Of Birth</InputLabel>
+								<InputLabel sx={{fontWeight: 400, color: '#95a5a6'}}>Date Of Birth</InputLabel>
 								<CustomDatePicker
 									name='dateOfBirth'
 									size='small'
@@ -88,7 +81,7 @@ const PersonalDetails = (props) => {
 							</Box>
 
 							<Box>
-								<InputLabel sx={{fontWeight: 600, color: '#95a5a6'}}>Mobile Number</InputLabel>
+								<InputLabel sx={{fontWeight: 400, color: '#95a5a6'}}>Mobile Number</InputLabel>
 								<TextInputField
 									name='mobileNumber'
 									size='small'
@@ -97,7 +90,7 @@ const PersonalDetails = (props) => {
 								/>
 							</Box>
 							<Box>
-								<InputLabel sx={{fontWeight: 600, color: '#95a5a6'}}>Email ID</InputLabel>
+								<InputLabel sx={{fontWeight: 400, color: '#95a5a6'}}>Email ID</InputLabel>
 								<TextInputField
 									name='emailId'
 									size='small'
@@ -110,7 +103,7 @@ const PersonalDetails = (props) => {
 					<>
 						<Box sx={{display: 'flex', alignItems: 'center', my: 4}}>
 							<Box>
-								<InputLabel sx={{fontWeight: 600, color: '#95a5a6'}}>State</InputLabel>
+								<InputLabel sx={{fontWeight: 400, color: '#95a5a6'}}>State</InputLabel>
 								<CustomSelect
 									name='state'
 									styles={selectStyles}
@@ -120,7 +113,7 @@ const PersonalDetails = (props) => {
 								/>
 							</Box>
 							<Box>
-								<InputLabel sx={{fontWeight: 600, color: '#95a5a6'}}>City</InputLabel>
+								<InputLabel sx={{fontWeight: 400, color: '#95a5a6'}}>City</InputLabel>
 								<CustomSelect
 									name='city'
 									styles={selectStyles}
@@ -130,7 +123,7 @@ const PersonalDetails = (props) => {
 								/>
 							</Box>
 							<Box>
-								<InputLabel sx={{fontWeight: 600, color: '#95a5a6'}}>Pincode</InputLabel>
+								<InputLabel sx={{fontWeight: 400, color: '#95a5a6'}}>Pincode</InputLabel>
 								<TextInputField
 									name='pincode'
 									size='small'

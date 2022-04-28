@@ -24,7 +24,7 @@ const Authentication = (props) => {
 	const handleClickAuth = () => setIsSignIn(!isSignIn);
 
 	// * Sending your user credentials to the backend for login and registration
-	const handleAuthSubmit = async (email, password, name) => {
+	const handleAuthSubmit = (email, password, name) => {
 		setIsLoading(true);
 
 		let authData;
@@ -52,6 +52,7 @@ const Authentication = (props) => {
 				console.log(response.data);
 				sessionStorage.setItem('token', response.data.jwt);
 				sessionStorage.setItem('username', response.data.user.username);
+				sessionStorage.setItem('userId', response.data.user.id);
 				setIsError(null);
 				setIsLoading(false);
 				navigate(`/profile-registration`);

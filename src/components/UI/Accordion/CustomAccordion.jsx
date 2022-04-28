@@ -2,12 +2,7 @@ import React from 'react';
 import {Accordion, AccordionDetails, AccordionSummary, Typography} from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-const CustomAccordion = ({accordionHeader, children, index}) => {
-	const [expanded, setExpanded] = React.useState(false);
-
-	const handleChange = (panel) => (event, isExpanded) => {
-		setExpanded(isExpanded ? panel : false);
-	};
+const CustomAccordion = ({accordionHeader, children, index, handleChange, expanded}) => {
 	return (
 		<Accordion
 			expanded={expanded === `panel${index}`}

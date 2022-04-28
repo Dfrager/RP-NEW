@@ -2,6 +2,17 @@ import React, {memo} from 'react';
 import {MenuItem, TextField, styled} from '@mui/material';
 import {useField, useFormikContext} from 'formik';
 
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+	PaperProps: {
+		style: {
+			maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+			width: 250,
+		},
+	},
+};
+
 const TextFieldWrapper = styled(TextField)({
 	'& .MuiOutlinedInput-root': {
 		borderRadius: 30,
@@ -48,15 +59,12 @@ const CustomSelect = ({
 			}}
 			SelectProps={{
 				renderValue: renderValue,
-				defaultValue: '',
+				MenuProps: MenuProps,
 			}}
 		>
-			<MenuItem disabled value=''>
-				{placeholder}
-			</MenuItem>
 			{options.map((item) => (
-				<MenuItem key={item.id} value={item.value}>
-					{item.value}
+				<MenuItem key={item} value={item}>
+					{item}
 				</MenuItem>
 			))}
 		</TextFieldWrapper>

@@ -15,6 +15,7 @@ import {SERVICES_VALIDATION, USER_PROFILE_VALIDATION_SCHEMA} from '../../shared/
 import UserProfileUI from '../../components/UI/UserProfileUI/UserProfileUI';
 import CRUDButton from '../../components/UI/CRUDButton/CRUDButton';
 import FreelancerDetails from '../../components/Common/Freelancer/FreelancerDetails';
+import CustomModal from '../../components/UI/Modal/CustomModal';
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -65,8 +66,21 @@ const ProfileRegistration = (props) => {
 		setExpanded(isExpanded ? panel : false);
 	};
 
+	// OPEN and CLOSE MODAL
+	const [open, setOpen] = React.useState(false);
+
+	const handleOpen = () => setOpen(true);
+	const handleClose = () => setOpen(false);
+	// OPEN and CLOSE MODAL
+
 	useEffect(() => {
-		const url = `${backendUrl}/api/user-profiles/id?populate="*"`;
+		// http://localhost:1337/api/user-profiles/?userProfile="userId"&equalTo="1"&populate=*
+
+		let id = sessionStorage.getItem('userId');
+		const profileId = 10;
+		const queryParam = `${profileId}?userProfile="userId"&equalTo="${id}"&populate=*`;
+		const url = `${backendUrl}/api/user-profiles/10`;
+
 		axios
 			.get(url)
 			.then((response) => {
@@ -119,6 +133,29 @@ const ProfileRegistration = (props) => {
 
 	return (
 		<Container>
+			<CustomModal open={open} handleOpen={handleOpen} handleClose={handleClose}>
+				<Formik
+					initialValues={{
+						fservices: '',
+					}}
+				>
+					{({values}) => (
+						<Form>
+							<UserProfileUI header='Freelancer Details' isSubmit='submit'>
+								<Box
+									sx={{
+										overflowY: 'scroll',
+										maxHeight: '460px',
+										height: '460px',
+									}}
+								>
+									<FreelancerDetails values={values} />
+								</Box>
+							</UserProfileUI>
+						</Form>
+					)}
+				</Formik>
+			</CustomModal>
 			<Box sx={{width: '100%', height: '100%', my: 16}}>
 				{/* User Profile Details */}
 
@@ -130,8 +167,6 @@ const ProfileRegistration = (props) => {
 					>
 						{(formik) => (
 							<Form>
-								{/* {console.log(formik)} */}
-
 								<UserProfileUI header='Personal Details' isSubmit='submit' showShadow={true}>
 									<PersonalDetails isDisabled={isDisabled && !!commonDetails} />
 								</UserProfileUI>
@@ -205,23 +240,20 @@ const ProfileRegistration = (props) => {
 								iconComponent={<AddBoxRoundedIcon sx={{mr: 2}} />}
 								color='#02A450'
 								typoValue='Add New Profile'
+								clicked={handleOpen}
 							/>
 						</Box>
 						<Box>
 							{freelancerProfile && freelancerProfile.length > 0 ? (
 								<>
 									{freelancerProfile.map((name, index) => (
-										<CustomAccordion accordionHeader={name} key={name} index={index}>
-											<Formik>
-												{(formik) => (
-													<Form>
-														<UserProfileUI isSubmit='submit'>
-															<FreelancerDetails />
-														</UserProfileUI>
-													</Form>
-												)}
-											</Formik>
-										</CustomAccordion>
+										<CustomAccordion
+											accordionHeader={name}
+											key={name}
+											index={index}
+											expanded={expanded}
+											handleChange={handleChange}
+										></CustomAccordion>
 									))}
 								</>
 							) : (
